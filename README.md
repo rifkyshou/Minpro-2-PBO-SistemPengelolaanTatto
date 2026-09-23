@@ -1,5 +1,7 @@
 # Minpro-2-PBO-SistemPengelolaanStudioTattoo
 
+> Nama : Awang Rifky Muhadzib NIM : 2509116059
+
 ## 1. Deskripsi Singkat Program
 
 Program ini adalah pengembangan dari Mini Project 1, berupa aplikasi **CRUD berbasis console (Java)** untuk mengelola data **booking/transaksi pada studio tattoo**. Setiap booking mencatat data pelanggan, data tattoo artist yang mengerjakan, nama desain/layanan, harga, tanggal, dan status pengerjaan (Menunggu, Dikerjakan, Selesai). Pada versi ini, program direstrukturisasi mengikuti pola **MVC (Model-View-Controller)** dan ditambahkan penerapan **inheritance** serta **polymorphism**.
@@ -20,11 +22,24 @@ Program ini adalah pengembangan dari Mini Project 1, berupa aplikasi **CRUD berb
 
 ## 3. Penjelasan Penerapan Encapsulation dan Inheritance
 
+### Struktur Class
+ 
+| Class | Package | Peran |
+|---|---|---|
+| `Orang` | `model` | Superclass (abstract) — menyimpan atribut umum `nama` dan `noHp`, serta method abstrak `getInfo()` |
+| `Pelanggan` | `model` | Subclass dari `Orang` — menambahkan atribut `alamat` |
+| `TattooArtist` | `model` | Subclass dari `Orang` — menambahkan atribut `spesialisasi` |
+| `Booking` | `model` | Menyimpan data booking, termasuk objek `Pelanggan` dan `TattooArtist` |
+| `BookingView` | `view` | Menampilkan menu utama dan daftar booking ke layar |
+| `BookingController` | `controller` | Menyimpan `ArrayList<Booking>`, fungsi CRUD, dan dummy data awal |
+| `InputValidator` | `util` | Membaca dan memvalidasi input dari pengguna |
+| `Main` | *(default)* | Entry point — menampilkan alur menu dan menghubungkan `controller` dengan `view` |
+
 ### Encapsulation
 
 Seluruh atribut pada class `Orang`, `Pelanggan`, `TattooArtist`, dan `Booking` dideklarasikan sebagai `private`, dan hanya dapat diakses/diubah melalui method `getter` dan `setter` yang disediakan.
 
-📄 **`model/Orang.java`**
+- **`model/Orang.java`**
 ```java
 private String nama;
 private String noHp;
@@ -33,7 +48,7 @@ public String getNama() { return nama; }
 public void setNama(String nama) { this.nama = nama; }
 ```
 
-📄 **`model/Pelanggan.java`**
+- **`model/Pelanggan.java`**
 ```java
 private String alamat;
 
@@ -41,7 +56,7 @@ public String getAlamat() { return alamat; }
 public void setAlamat(String alamat) { this.alamat = alamat; }
 ```
 
-📄 **`model/Booking.java`**
+- **`model/Booking.java`**
 ```java
 private double harga;
 private String status;
@@ -56,7 +71,7 @@ Dengan pola ini, data pada tiap objek tidak dapat diubah langsung dari luar clas
 
 Program menerapkan inheritance dengan **1 superclass dan 2 subclass**:
 
-📄 **`model/Orang.java`** (superclass, abstract)
+- **`model/Orang.java`** (superclass, abstract)
 ```java
 public abstract class Orang {
     private String nama;
@@ -66,7 +81,7 @@ public abstract class Orang {
 }
 ```
 
-📄 **`model/Pelanggan.java`** (subclass 1)
+- **`model/Pelanggan.java`** (subclass 1)
 ```java
 public class Pelanggan extends Orang {
     private String alamat;
@@ -74,7 +89,7 @@ public class Pelanggan extends Orang {
 }
 ```
 
-📄 **`model/TattooArtist.java`** (subclass 2)
+- **`model/TattooArtist.java`** (subclass 2)
 ```java
 public class TattooArtist extends Orang {
     private String spesialisasi;
@@ -114,12 +129,12 @@ studio-tattoo-minpro2/
 
 ### Polymorphism — Method Overriding
 
-📄 **`model/Orang.java`** mendeklarasikan method abstrak:
+- **`model/Orang.java`** mendeklarasikan method abstrak:
 ```java
 public abstract String getInfo();
 ```
 
-📄 **`model/Pelanggan.java`** dan **`model/TattooArtist.java`** mengimplementasikannya secara berbeda:
+- **`model/Pelanggan.java`** dan **`model/TattooArtist.java`** mengimplementasikannya secara berbeda:
 ```java
 // Pelanggan.java
 public String getInfo() {
@@ -132,7 +147,7 @@ public String getInfo() {
 }
 ```
 
-📄 **`view/BookingView.java`** memanggilnya lewat reference bertipe `Orang`:
+- **`view/BookingView.java`** memanggilnya lewat reference bertipe `Orang`:
 ```java
 Orang pelanggan = b.getPelanggan();
 Orang artist = b.getArtist();
@@ -143,7 +158,7 @@ Method yang dijalankan ditentukan berdasarkan objek aslinya saat runtime, meskip
 
 ### Polymorphism — Method Overloading
 
-📄 **`util/InputValidator.java`** memiliki dua versi method dengan nama sama tapi parameter berbeda:
+- **`util/InputValidator.java`** memiliki dua versi method dengan nama sama tapi parameter berbeda:
 ```java
 public static String bacaString(String pesan)                 // tanpa contoh
 public static String bacaString(String pesan, String contoh)  // dengan contoh/petunjuk
@@ -152,11 +167,11 @@ Pola yang sama diterapkan juga pada `bacaInt()` dan `bacaDouble()`. Versi dengan
 
 ### Dummy Data Awal
 
-📄 **`controller/BookingController.java`**, method `seedData()` dipanggil otomatis lewat constructor, mengisi 2 data booking beserta pelanggan dan artist-nya begitu program dijalankan — sehingga menu **Lihat Semua Booking** langsung menampilkan data tanpa input manual.
+- **`controller/BookingController.java`**, method `seedData()` dipanggil otomatis lewat constructor, mengisi 2 data booking beserta pelanggan dan artist-nya begitu program dijalankan — sehingga menu **Lihat Semua Booking** langsung menampilkan data tanpa input manual.
 
 ### Validasi Input
 
-📄 **`util/InputValidator.java`** memastikan input angka benar-benar angka (`try-catch NumberFormatException`) dan input teks tidak boleh kosong, dengan validasi ID juga diterapkan pada fitur update/ubah status/hapus di `Main.java`.
+- **`util/InputValidator.java`** memastikan input angka benar-benar angka (`try-catch NumberFormatException`) dan input teks tidak boleh kosong, dengan validasi ID juga diterapkan pada fitur update/ubah status/hapus di `Main.java`.
 
 ## Cara Menjalankan Program
 
