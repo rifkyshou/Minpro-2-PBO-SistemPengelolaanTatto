@@ -17,7 +17,7 @@ Program ini adalah pengembangan dari Mini Project 1, berupa aplikasi **CRUD berb
    - **Update Booking** - memperbarui nama desain, harga, dan tanggal booking berdasarkan ID.
    - **Ubah Status Booking** - mengubah status booking berdasarkan ID.
    - **Hapus Booking** - menghapus data booking berdasarkan ID.
-5. Setiap input pengguna divalidasi lewat `InputValidator`, yang juga mendukung penampilan contoh/petunjuk (lewat overload method) — saat ini dipakai untuk memberi tahu pilihan spesialisasi artist di awal alur Tambah Booking, dan format tanggal tepat sebelum field tanggal ditanya.
+5. Setiap input pengguna divalidasi lewat `InputValidator`, yang juga mendukung penampilan contoh/petunjuk (lewat overload method) - saat ini dipakai untuk memberi tahu pilihan spesialisasi artist di awal alur Tambah Booking, dan format tanggal tepat sebelum field tanggal ditanya.
 6. Program kembali ke menu utama setelah setiap aksi, dan berulang hingga pengguna memilih keluar.
 
 ## 3. Penjelasan Penerapan Encapsulation dan Inheritance
@@ -65,7 +65,7 @@ public double getHarga() { return harga; }
 public void setStatus(String status) { this.status = status; }
 ```
 
-Dengan pola ini, data pada tiap objek tidak dapat diubah langsung dari luar class (misalnya `booking.harga = 0;` tidak bisa dilakukan), melainkan harus melalui method yang telah disediakan — sehingga nilai yang masuk lebih terkontrol.
+Dengan pola ini, data pada tiap objek tidak dapat diubah langsung dari luar class (misalnya `booking.harga = 0;` tidak bisa dilakukan), melainkan harus melalui method yang telah disediakan - sehingga nilai yang masuk lebih terkontrol.
 
 ### Inheritance
 
@@ -167,7 +167,7 @@ Pola yang sama diterapkan juga pada `bacaInt()` dan `bacaDouble()`. Versi dengan
 
 ### Dummy Data Awal
 
-- **`controller/BookingController.java`**, method `seedData()` dipanggil otomatis lewat constructor, mengisi 2 data booking beserta pelanggan dan artist-nya begitu program dijalankan — sehingga menu **Lihat Semua Booking** langsung menampilkan data tanpa input manual.
+- **`controller/BookingController.java`**, method `seedData()` dipanggil otomatis lewat constructor, mengisi 2 data booking beserta pelanggan dan artist-nya begitu program dijalankan - sehingga menu **Lihat Semua Booking** langsung menampilkan data tanpa input manual.
 
 ### Validasi Input
 
