@@ -12,11 +12,11 @@ Program ini adalah pengembangan dari Mini Project 1, berupa aplikasi **CRUD berb
 2. Saat `BookingController` dibuat, method `seedData()` otomatis menjalankan **dummy data awal** (2 data booking beserta pelanggan dan artist-nya), sehingga menu **Lihat Semua Booking** langsung menampilkan data tanpa perlu input manual terlebih dahulu.
 3. Program menampilkan menu utama secara berulang menggunakan `do-while`, sehingga terus berjalan sampai pengguna memilih menu **0 (Keluar)**.
 4. Pemilihan menu diproses dengan `switch`, mengarah ke lima aksi:
-   - **Tambah Booking** — pengguna mengisi data pelanggan, artist, dan layanan sekaligus dalam satu alur input (tidak ada menu terpisah untuk kelola pelanggan). Sebelum input dimulai, program menampilkan petunjuk singkat mengenai pilihan spesialisasi artist yang tersedia. Program lalu membuat objek `Pelanggan`, `TattooArtist`, dan `Booking` secara langsung.
-   - **Lihat Semua Booking** — menampilkan seluruh data booking, termasuk info pelanggan dan artist yang diambil lewat method `getInfo()` (lihat bagian Polymorphism di bawah).
-   - **Update Booking** — memperbarui nama desain, harga, dan tanggal booking berdasarkan ID.
-   - **Ubah Status Booking** — mengubah status booking berdasarkan ID.
-   - **Hapus Booking** — menghapus data booking berdasarkan ID.
+   - **Tambah Booking** - pengguna mengisi data pelanggan, artist, dan layanan sekaligus dalam satu alur input (tidak ada menu terpisah untuk kelola pelanggan). Sebelum input dimulai, program menampilkan petunjuk singkat mengenai pilihan spesialisasi artist yang tersedia. Program lalu membuat objek `Pelanggan`, `TattooArtist`, dan `Booking` secara langsung.
+   - **Lihat Semua Booking** - menampilkan seluruh data booking, termasuk info pelanggan dan artist yang diambil lewat method `getInfo()` (lihat bagian Polymorphism di bawah).
+   - **Update Booking** - memperbarui nama desain, harga, dan tanggal booking berdasarkan ID.
+   - **Ubah Status Booking** - mengubah status booking berdasarkan ID.
+   - **Hapus Booking** - menghapus data booking berdasarkan ID.
 5. Setiap input pengguna divalidasi lewat `InputValidator`, yang juga mendukung penampilan contoh/petunjuk (lewat overload method) — saat ini dipakai untuk memberi tahu pilihan spesialisasi artist di awal alur Tambah Booking, dan format tanggal tepat sebelum field tanggal ditanya.
 6. Program kembali ke menu utama setelah setiap aksi, dan berulang hingga pengguna memilih keluar.
 
@@ -26,14 +26,14 @@ Program ini adalah pengembangan dari Mini Project 1, berupa aplikasi **CRUD berb
  
 | Class | Package | Peran |
 |---|---|---|
-| `Orang` | `model` | Superclass (abstract) — menyimpan atribut umum `nama` dan `noHp`, serta method abstrak `getInfo()` |
-| `Pelanggan` | `model` | Subclass dari `Orang` — menambahkan atribut `alamat` |
-| `TattooArtist` | `model` | Subclass dari `Orang` — menambahkan atribut `spesialisasi` |
+| `Orang` | `model` | Superclass (abstract) - menyimpan atribut umum `nama` dan `noHp`, serta method abstrak `getInfo()` |
+| `Pelanggan` | `model` | Subclass dari `Orang` - menambahkan atribut `alamat` |
+| `TattooArtist` | `model` | Subclass dari `Orang` - menambahkan atribut `spesialisasi` |
 | `Booking` | `model` | Menyimpan data booking, termasuk objek `Pelanggan` dan `TattooArtist` |
 | `BookingView` | `view` | Menampilkan menu utama dan daftar booking ke layar |
 | `BookingController` | `controller` | Menyimpan `ArrayList<Booking>`, fungsi CRUD, dan dummy data awal |
 | `InputValidator` | `util` | Membaca dan memvalidasi input dari pengguna |
-| `Main` | *(default)* | Entry point — menampilkan alur menu dan menghubungkan `controller` dengan `view` |
+| `Main` | *(default)* | Entry point - menampilkan alur menu dan menghubungkan `controller` dengan `view` |
 
 ### Encapsulation
 
@@ -121,13 +121,13 @@ studio-tattoo-minpro2/
     └── InputValidator.java
 ```
 
-- **`model`** — hanya berisi struktur data (atribut, constructor, getter/setter), tidak ada logic tampilan maupun proses CRUD.
-- **`view`** (`BookingView.java`) — bertanggung jawab menampilkan menu dan data ke layar. Tidak menyimpan data maupun logic pengolahan.
-- **`controller`** (`BookingController.java`) — menjembatani `model` dan `view`; menyimpan `ArrayList<Booking>` serta fungsi tambah/cari/update/ubah status/hapus, termasuk dummy data awal.
-- **`util`** (`InputValidator.java`) — class pendukung untuk membaca dan memvalidasi input dari pengguna.
-- **`Main.java`** — menghubungkan `controller` (proses data) dan `view` (tampilkan hasil ke pengguna).
+- **`model`** - hanya berisi struktur data (atribut, constructor, getter/setter), tidak ada logic tampilan maupun proses CRUD.
+- **`view`** (`BookingView.java`) - bertanggung jawab menampilkan menu dan data ke layar. Tidak menyimpan data maupun logic pengolahan.
+- **`controller`** (`BookingController.java`) - menjembatani `model` dan `view`; menyimpan `ArrayList<Booking>` serta fungsi tambah/cari/update/ubah status/hapus, termasuk dummy data awal.
+- **`util`** (`InputValidator.java`) - class pendukung untuk membaca dan memvalidasi input dari pengguna.
+- **`Main.java`** - menghubungkan `controller` (proses data) dan `view` (tampilkan hasil ke pengguna).
 
-### Polymorphism — Method Overriding
+### Polymorphism - Method Overriding
 
 - **`model/Orang.java`** mendeklarasikan method abstrak:
 ```java
@@ -154,9 +154,9 @@ Orang artist = b.getArtist();
 System.out.println(pelanggan.getInfo()); // menjalankan versi Pelanggan
 System.out.println(artist.getInfo());    // menjalankan versi TattooArtist
 ```
-Method yang dijalankan ditentukan berdasarkan objek aslinya saat runtime, meskipun tipe reference-nya sama (`Orang`) — inilah yang disebut polymorphism.
+Method yang dijalankan ditentukan berdasarkan objek aslinya saat runtime, meskipun tipe reference-nya sama (`Orang`) - inilah yang disebut polymorphism.
 
-### Polymorphism — Method Overloading
+### Polymorphism - Method Overloading
 
 - **`util/InputValidator.java`** memiliki dua versi method dengan nama sama tapi parameter berbeda:
 ```java
