@@ -79,21 +79,7 @@ Kedua subclass **mewarisi** atribut dan method dari `Orang` (seperti `getNama()`
 
 Program disusun dalam package terpisah sebagai berikut:
 
-```
-studio-tattoo-minpro2/
-├── Main.java                          -> Entry point program
-├── model/                             -> MODEL: representasi data
-│   ├── Orang.java                     -> superclass (abstract)
-│   ├── Pelanggan.java                 -> subclass dari Orang
-│   ├── TattooArtist.java              -> subclass dari Orang
-│   └── Booking.java                   -> entitas transaksi
-├── view/                              -> VIEW: tampilan ke layar
-│   └── BookingView.java
-├── controller/                        -> CONTROLLER: logika aplikasi
-│   └── BookingController.java
-└── util/                              -> UTILITY: validasi input
-    └── InputValidator.java
-```
+<img width="402" height="332" alt="image" src="https://github.com/user-attachments/assets/466d8e5a-8fe0-4c3c-be5a-f610d3bdb8a0" />
 
 - **`model`** - hanya berisi struktur data (atribut, constructor, getter/setter), tidak ada logic tampilan maupun proses CRUD.
 - **`view`** (`BookingView.java`) - bertanggung jawab menampilkan menu dan data ke layar. Tidak menyimpan data maupun logic pengolahan.
@@ -134,14 +120,6 @@ Pola yang sama diterapkan juga pada `bacaInt()` dan `bacaDouble()`. Versi dengan
 ### Validasi Input
 
 - **`util/InputValidator.java`** memastikan input angka benar-benar angka (`try-catch NumberFormatException`) dan input teks tidak boleh kosong, dengan validasi ID juga diterapkan pada fitur update/ubah status/hapus di `Main.java`.
-
-## Cara Menjalankan Program
-
-Jalankan dari root folder project:
-```bash
-javac -d . Main.java model/*.java view/*.java controller/*.java util/*.java
-java Main
-```
 
 ## Struktur File Lengkap
 
