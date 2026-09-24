@@ -40,30 +40,18 @@ Program ini adalah pengembangan dari Mini Project 1, berupa aplikasi **CRUD berb
 Seluruh atribut pada class `Orang`, `Pelanggan`, `TattooArtist`, dan `Booking` dideklarasikan sebagai `private`, dan hanya dapat diakses/diubah melalui method `getter` dan `setter` yang disediakan.
 
 - **`model/Orang.java`**
-```java
-private String nama;
-private String noHp;
-
-public String getNama() { return nama; }
-public void setNama(String nama) { this.nama = nama; }
-```
+  
+<img width="640" height="362" alt="image" src="https://github.com/user-attachments/assets/f1599319-f55d-4008-a8f8-c611183e8d22" />
 
 - **`model/Pelanggan.java`**
-```java
-private String alamat;
 
-public String getAlamat() { return alamat; }
-public void setAlamat(String alamat) { this.alamat = alamat; }
-```
+<img width="867" height="362" alt="image" src="https://github.com/user-attachments/assets/e187b4a4-9407-46ed-9224-0c555e5ba85a" />
 
 - **`model/Booking.java`**
-```java
-private double harga;
-private String status;
+  
+<img width="348" height="176" alt="image" src="https://github.com/user-attachments/assets/b3934e11-7d07-444b-8c5a-0fc14d3fb983" />
 
-public double getHarga() { return harga; }
-public void setStatus(String status) { this.status = status; }
-```
+<img width="567" height="170" alt="image" src="https://github.com/user-attachments/assets/f9dc4386-86cb-46d3-8ed0-d3c8e5a91d08" />
 
 Dengan pola ini, data pada tiap objek tidak dapat diubah langsung dari luar class (misalnya `booking.harga = 0;` tidak bisa dilakukan), melainkan harus melalui method yang telah disediakan - sehingga nilai yang masuk lebih terkontrol.
 
@@ -72,30 +60,16 @@ Dengan pola ini, data pada tiap objek tidak dapat diubah langsung dari luar clas
 Program menerapkan inheritance dengan **1 superclass dan 2 subclass**:
 
 - **`model/Orang.java`** (superclass, abstract)
-```java
-public abstract class Orang {
-    private String nama;
-    private String noHp;
-    ...
-    public abstract String getInfo();
-}
-```
+
+<img width="335" height="72" alt="image" src="https://github.com/user-attachments/assets/6d0e6de0-d18c-4eb8-8e15-aab7b00b18d0" />
 
 - **`model/Pelanggan.java`** (subclass 1)
-```java
-public class Pelanggan extends Orang {
-    private String alamat;
-    ...
-}
-```
+
+<img width="408" height="50" alt="image" src="https://github.com/user-attachments/assets/d2834560-4d40-482a-8c9f-7e54395df1af" />
 
 - **`model/TattooArtist.java`** (subclass 2)
-```java
-public class TattooArtist extends Orang {
-    private String spesialisasi;
-    ...
-}
-```
+
+<img width="437" height="46" alt="image" src="https://github.com/user-attachments/assets/6130a3b7-9072-41b1-8921-6af99bdf86df" />
 
 Kedua subclass **mewarisi** atribut dan method dari `Orang` (seperti `getNama()`, `getNoHp()`, `setNama()`, `setNoHp()`), sekaligus menambahkan atributnya masing-masing (`alamat` pada `Pelanggan`, `spesialisasi` pada `TattooArtist`).
 
@@ -130,39 +104,27 @@ studio-tattoo-minpro2/
 ### Polymorphism - Method Overriding
 
 - **`model/Orang.java`** mendeklarasikan method abstrak:
-```java
-public abstract String getInfo();
-```
+
+<img width="350" height="32" alt="image" src="https://github.com/user-attachments/assets/7a565fb3-bec8-4275-a6ca-c322baa47001" />
 
 - **`model/Pelanggan.java`** dan **`model/TattooArtist.java`** mengimplementasikannya secara berbeda:
-```java
-// Pelanggan.java
-public String getInfo() {
-    return "Nama: " + getNama() + " | HP: " + getNoHp() + " | Alamat: " + alamat;
-}
 
-// TattooArtist.java
-public String getInfo() {
-    return "Nama: " + getNama() + " | Spesialisasi: " + spesialisasi;
-}
-```
+<img width="831" height="40" alt="image" src="https://github.com/user-attachments/assets/def2f321-2c5e-4d03-bdbd-f38e836e90ff" />
+
+<img width="705" height="40" alt="image" src="https://github.com/user-attachments/assets/074ed9a9-baa3-4184-b984-6425b0fde862" />
 
 - **`view/BookingView.java`** memanggilnya lewat reference bertipe `Orang`:
-```java
-Orang pelanggan = b.getPelanggan();
-Orang artist = b.getArtist();
-System.out.println(pelanggan.getInfo()); // menjalankan versi Pelanggan
-System.out.println(artist.getInfo());    // menjalankan versi TattooArtist
-```
+
+<img width="370" height="47" alt="image" src="https://github.com/user-attachments/assets/a4a45650-440b-48db-b219-9ca3856505b7" />
+
 Method yang dijalankan ditentukan berdasarkan objek aslinya saat runtime, meskipun tipe reference-nya sama (`Orang`) - inilah yang disebut polymorphism.
 
 ### Polymorphism - Method Overloading
 
 - **`util/InputValidator.java`** memiliki dua versi method dengan nama sama tapi parameter berbeda:
-```java
-public static String bacaString(String pesan)                 // tanpa contoh
-public static String bacaString(String pesan, String contoh)  // dengan contoh/petunjuk
-```
+
+<img width="697" height="253" alt="image" src="https://github.com/user-attachments/assets/4d85dfae-8bf9-4390-8656-33e0c291c56e" />
+
 Pola yang sama diterapkan juga pada `bacaInt()` dan `bacaDouble()`. Versi dengan parameter `contoh` inilah yang dipakai di `Main.java` untuk menampilkan petunjuk pilihan spesialisasi artist dan format tanggal.
 
 ### Dummy Data Awal
