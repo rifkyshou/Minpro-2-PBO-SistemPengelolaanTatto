@@ -40,18 +40,26 @@ Program ini adalah pengembangan dari Mini Project 1, berupa aplikasi **CRUD berb
 Seluruh atribut pada class `Orang`, `Pelanggan`, `TattooArtist`, dan `Booking` dideklarasikan sebagai `private`, dan hanya dapat diakses/diubah melalui method `getter` dan `setter` yang disediakan.
 
 - **`model/Orang.java`**
-  
+
+<p align="center">
 <img width="640" height="362" alt="image" src="https://github.com/user-attachments/assets/f1599319-f55d-4008-a8f8-c611183e8d22" />
+</p>
 
 - **`model/Pelanggan.java`**
 
+<p align="center">
 <img width="867" height="362" alt="image" src="https://github.com/user-attachments/assets/e187b4a4-9407-46ed-9224-0c555e5ba85a" />
+</p>
 
 - **`model/Booking.java`**
-  
-<img width="348" height="176" alt="image" src="https://github.com/user-attachments/assets/b3934e11-7d07-444b-8c5a-0fc14d3fb983" />
 
+<p align="center">
+<img width="348" height="176" alt="image" src="https://github.com/user-attachments/assets/b3934e11-7d07-444b-8c5a-0fc14d3fb983" />
+</p>
+
+<p align="center">
 <img width="567" height="170" alt="image" src="https://github.com/user-attachments/assets/f9dc4386-86cb-46d3-8ed0-d3c8e5a91d08" />
+</p>
 
 Dengan pola ini, data pada tiap objek tidak dapat diubah langsung dari luar class (misalnya `booking.harga = 0;` tidak bisa dilakukan), melainkan harus melalui method yang telah disediakan - sehingga nilai yang masuk lebih terkontrol.
 
@@ -61,15 +69,21 @@ Program menerapkan inheritance dengan **1 superclass dan 2 subclass**:
 
 - **`model/Orang.java`** (superclass, abstract)
 
+<p align="center">
 <img width="335" height="72" alt="image" src="https://github.com/user-attachments/assets/6d0e6de0-d18c-4eb8-8e15-aab7b00b18d0" />
+</p>
 
 - **`model/Pelanggan.java`** (subclass 1)
 
+<p align="center">
 <img width="408" height="50" alt="image" src="https://github.com/user-attachments/assets/d2834560-4d40-482a-8c9f-7e54395df1af" />
+</p>
 
 - **`model/TattooArtist.java`** (subclass 2)
 
+<p align="center">
 <img width="437" height="46" alt="image" src="https://github.com/user-attachments/assets/6130a3b7-9072-41b1-8921-6af99bdf86df" />
+</p>
 
 Kedua subclass **mewarisi** atribut dan method dari `Orang` (seperti `getNama()`, `getNoHp()`, `setNama()`, `setNoHp()`), sekaligus menambahkan atributnya masing-masing (`alamat` pada `Pelanggan`, `spesialisasi` pada `TattooArtist`).
 
@@ -79,7 +93,9 @@ Kedua subclass **mewarisi** atribut dan method dari `Orang` (seperti `getNama()`
 
 Program disusun dalam package terpisah sebagai berikut:
 
+<p align="center">
 <img width="402" height="332" alt="image" src="https://github.com/user-attachments/assets/466d8e5a-8fe0-4c3c-be5a-f610d3bdb8a0" />
+</p>
 
 - **`model`** - hanya berisi struktur data (atribut, constructor, getter/setter), tidak ada logic tampilan maupun proses CRUD.
 - **`view`** (`BookingView.java`) - bertanggung jawab menampilkan menu dan data ke layar. Tidak menyimpan data maupun logic pengolahan.
@@ -91,17 +107,25 @@ Program disusun dalam package terpisah sebagai berikut:
 
 - **`model/Orang.java`** mendeklarasikan method abstrak:
 
+<p align="center">
 <img width="350" height="32" alt="image" src="https://github.com/user-attachments/assets/7a565fb3-bec8-4275-a6ca-c322baa47001" />
+</p>
 
 - **`model/Pelanggan.java`** dan **`model/TattooArtist.java`** mengimplementasikannya secara berbeda:
 
+<p align="center">
 <img width="831" height="40" alt="image" src="https://github.com/user-attachments/assets/def2f321-2c5e-4d03-bdbd-f38e836e90ff" />
+</p>
 
+<p align="center">
 <img width="705" height="40" alt="image" src="https://github.com/user-attachments/assets/074ed9a9-baa3-4184-b984-6425b0fde862" />
+</p>
 
 - **`view/BookingView.java`** memanggilnya lewat reference bertipe `Orang`:
 
+<p align="center">
 <img width="370" height="47" alt="image" src="https://github.com/user-attachments/assets/a4a45650-440b-48db-b219-9ca3856505b7" />
+</p>
 
 Method yang dijalankan ditentukan berdasarkan objek aslinya saat runtime, meskipun tipe reference-nya sama (`Orang`) - inilah yang disebut polymorphism.
 
@@ -109,7 +133,9 @@ Method yang dijalankan ditentukan berdasarkan objek aslinya saat runtime, meskip
 
 - **`util/InputValidator.java`** memiliki dua versi method dengan nama sama tapi parameter berbeda:
 
+<p align="center">
 <img width="697" height="253" alt="image" src="https://github.com/user-attachments/assets/4d85dfae-8bf9-4390-8656-33e0c291c56e" />
+</p>
 
 Pola yang sama diterapkan juga pada `bacaInt()` dan `bacaDouble()`. Versi dengan parameter `contoh` inilah yang dipakai di `Main.java` untuk menampilkan petunjuk pilihan spesialisasi artist dan format tanggal.
 
